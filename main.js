@@ -34,9 +34,12 @@ client.on('message', message => {
 
     //commands
     if(command === 'ping'){
-       client.commands.get('ping').execute(message,args);
+        client.commands.get('ping').execute(message,args);
+    } else if (command == 'join'){
+        client.commands.get('join').execute(message,args);
+    } else if (command == 'leave'){
+        client.commands.get('leave').execute(message,args);
     }
-
 });
 
 client.login(process.env.BOT_TOKEN)
