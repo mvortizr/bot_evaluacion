@@ -1,12 +1,12 @@
-const Discord = require('discord.js');
+const {Client,Collection} = require('discord.js');
 require('dotenv').config();
-const client = new Discord.Client();
+const client = new Client();
 const fs = require('fs');
 
 const prefix = '!'
 
 // setting commands
-client.commands = new Discord.Collection();
+client.commands = new Collection();
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 
@@ -39,7 +39,10 @@ client.on('message', message => {
         client.commands.get('join').execute(message,args);
     } else if (command == 'leave'){
         client.commands.get('leave').execute(message,args);
+    } else if (command == 'send') {
+        client.commands.get('send').execute(message,args);
     }
 });
+
 
 client.login(process.env.BOT_TOKEN)

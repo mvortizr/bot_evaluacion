@@ -13,16 +13,15 @@ module.exports = {
 
     
         const t0 = performance.now();
-        
         try {
             await voice.channel.join()
+            const t1 = performance.now();
+            const miliseconds = t1-t0;
+            console.log(`Time taken ${miliseconds} miliseconds, ${miliseconds/1000} seconds`);
+            await message.channel.send(`Time taken ${miliseconds} miliseconds, ${miliseconds/1000} seconds`);
         } catch (e) {
             console.log(`ERROR ${e}`)
         }
-
-        const t1 = performance.now();
-        const miliseconds = t1-t0;
-        message.channel.send(`Time taken ${miliseconds} miliseconds, ${miliseconds/1000} seconds`);
         //voice.channel.leave()
     },   
 }
